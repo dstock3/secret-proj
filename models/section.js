@@ -10,7 +10,6 @@ var SectionSchema = new Schema(
   }
 );
 
-
 // Virtual for section's URL
 SectionSchema
 .virtual('url')
