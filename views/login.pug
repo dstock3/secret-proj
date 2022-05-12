@@ -1,9 +1,8 @@
 extends layout
-    h1= Sign Up
-    form(action="" method="POST")
+    h1= Please Log In
+    form(action="/log-in" method="POST")
         label(for="username") Username
         input(name="username" placeholder="username" type="text")
         label(for="password") Password
         input(name="password" type="password")
-        button Sign Up
-
+        button Log In
