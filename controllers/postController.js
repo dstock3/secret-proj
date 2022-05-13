@@ -1,5 +1,10 @@
 var Post = require('../models/posts');
 
+// Display home page
+exports.index = function(req, res) {
+    res.send('NOT IMPLEMENTED: homepage');
+};
+
 // Display list of all Posts.
 exports.post_list = function(req, res) {
     res.send('NOT IMPLEMENTED: Post list');
