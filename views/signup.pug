@@ -1,14 +1,15 @@
 extends layout
 
 block content
-    h1 Create an Account
+    h1 Members Only
+    h2 Create an Account
     form(action="" method="POST")
-        label(for="username") Username
-        input(name="username" placeholder="username" type="text")
+        label(for="name") Username
+        input(name="name" type="text")
         label(for="password") Password
         input(name="password" type="password")
         label(for="bio") Bio
         textarea(name="bio" type="text" placeholder="Tell us about yourself.")
         button Sign Up
     div(class="log-in") Already have an account?
-        a(href="/log-in") Log In
+        a(href="/users/log-in") Log In

@@ -10,16 +10,33 @@ exports.user_detail = function(req, res) {
     res.send('NOT IMPLEMENTED: user detail: ' + req.params.id);
 };
 
+exports.user_login_get = function(req, res) {
+    res.render("login")
+}
+
+exports.user_login_post = function(req, res) {
+    res.send('NOT IMPLEMENTED: user login');
+}
+
 // Display user create form on GET.
 exports.user_create_get = function(req, res) {
     res.render("signup")
 };
 
 // Handle user create on POST.
-exports.user_create_post = function(req, res) {
+exports.user_create_post = function(req, res, next) {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
+
     const user = new User({
-        username: req.body.username,
-        password: req.body.password
+        name: req.body.name,
+        password: req.body.password,
+        bio: req.body.bio,
+        date: today
       }).save(err => {
         if (err) { 
           return next(err);
