@@ -29,9 +29,6 @@ router.get('/:id', post_controller.post_detail);
 // GET request for list of all posts.
 router.get('/posts', post_controller.post_list);
 
-// GET request for homepage.
-router.get('/', post_controller.index);
-
 // GET request for creating a section. 
 router.get('/section/create', section_controller.section_create_get);
 
