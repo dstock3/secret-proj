@@ -4,7 +4,9 @@ block content
     h1= Please Log In
     form(action="/log-in" method="POST")
         label(for="username") Username
-        input(name="username" placeholder="username" type="text")
+        input(name="username" type="text")
         label(for="password") Password
         input(name="password" type="password")
         button Log In
+    div(class="sign-up") Don't have an account? 
+      a(href="/sign-up") Sign Up!
