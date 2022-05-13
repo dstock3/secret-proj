@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+// Require controller modules.
+var section_controller = require('../controllers/sectionController');
+
 // GET request for creating a section. 
 router.get('/section/create', section_controller.section_create_get);
 
