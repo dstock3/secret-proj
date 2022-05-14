@@ -16,10 +16,10 @@ exports.user_login_get = function(req, res) {
     res.render("login")
 }
 
-exports.user_login_post = function(req, res) {
-    res.redirect('/~' + req.user._id);
-
-}
+exports.user_login_post = passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/log-in",
+});
 
 // Display user create form on GET.
 exports.user_create_get = function(req, res) {
