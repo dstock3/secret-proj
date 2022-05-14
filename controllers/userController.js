@@ -21,6 +21,11 @@ exports.user_login_post = passport.authenticate("local", {
     failureRedirect: "/failure",
 });
 
+exports.user_logout_get = (req, res) => {
+    req.logout();
+    res.redirect("/");
+  }
+
 // Display user create form on GET.
 exports.user_create_get = function(req, res) {
     res.render("signup")

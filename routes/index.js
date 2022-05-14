@@ -60,6 +60,9 @@ router.get('/log-in', user_controller.user_login_get);
 // POST request for user login. 
 router.post('/log-in', user_controller.user_login_post);
 
+// GET request for user logout
+router.get('/log-out', user_controller.user_logout_get);
+
 // GET request to delete user.
 router.get('/user/:name/delete', user_controller.user_delete_get);
 
