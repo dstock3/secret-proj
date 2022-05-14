@@ -3,7 +3,7 @@ extends layout
 block content
   h1 Members Only
   if user
-    h2 Welcome Back #{user.username}
+    h2 Welcome Back #{user.name}
     a(href="/log-out") Log Out
   else
     h1 Please Log In

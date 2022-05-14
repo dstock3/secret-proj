@@ -6,8 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
+var session = require("express-session"); 
 var bcrypt = require('bcryptjs')
-const User = require("./models/user");
+var User = require("./models/user");
 
 var indexRouter = require('./routes/index');
 
@@ -53,6 +54,10 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+app.use(session({ secret: process.env.secret, resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
 // access user obj from anywhere in our app
 app.use((req, res, next) => {
