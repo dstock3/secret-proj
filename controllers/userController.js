@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var passport = require('passport');
 var bcrypt = require('bcryptjs')
 
 // Display list of all users.
@@ -16,7 +17,8 @@ exports.user_login_get = function(req, res) {
 }
 
 exports.user_login_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: user login');
+    res.redirect('/~' + req.user._id);
+
 }
 
 // Display user create form on GET.
@@ -35,7 +37,8 @@ exports.user_create_post = function(req, res, next) {
     today = mm + '/' + dd + '/' + yyyy;
 
     bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-        if (err) { 
+        if (err) {
+            console.error(err)
             return next(err);
         } else {
             const user = new User({
@@ -44,8 +47,9 @@ exports.user_create_post = function(req, res, next) {
                 bio: req.body.bio,
                 date: today
               }).save(err => {
-                if (err) { 
-                  return next(err);
+                if (err) {
+                    console.error(err)
+                    return next(err);
                 }
                 res.redirect("/");
               });
