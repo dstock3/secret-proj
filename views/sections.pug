@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 Members Only
+    each sectionDetails in sections
+        div(class="section-container")
+            h2(class="section-name") #{sectionDetails.section.name}
+
+            div(class="posts-container")
+                each postDetails in posts
+                    if sectionDetails.sectionID === postDetails.postSectionID
+                        div(class="post-container")
+                            h3(class="post-name") #{postDetails.post.subject}

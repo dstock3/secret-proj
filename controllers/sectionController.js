@@ -1,8 +1,41 @@
 var Section = require('../models/section');
+var Posts = require('../models/posts');
+var async = require('async');
 
 // Display list of all sections.
 exports.section_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: section list');
+    async.parallel({
+        posts: function(callback) {
+            Posts.find()
+                .sort([['subject', 'ascending']])
+                .exec(callback)
+        },
+        sections: function(callback) {
+            Section.find()
+                .exec(callback)
+        }
+    }, function(err, results) {
+
+        let sectionArray = []
+        let postArray = []
+
+        for (let y = 0; y < results.sections.length; y++) {
+            let sectionDetails = {
+                section: results.sections[y],
+                sectionID: JSON.stringify(results.sections[y]._id)
+            }
+            sectionArray.push(sectionDetails)
+        }
+        for (let i = 0; i < results.posts.length; i++) {
+            let postDetails = {
+                post: results.posts[i],
+                postSectionID: JSON.stringify(results.posts[i].section)
+            }
+            postArray.push(postDetails)
+        }
+
+        res.render('sections', { title: 'Sections', error: err, posts: postArray, sections: sectionArray  });
+    });
 };
 
 // Display detail page for a specific section.
