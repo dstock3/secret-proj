@@ -40,7 +40,31 @@ exports.section_list = function(req, res) {
 
 // Display detail page for a specific section.
 exports.section_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: section detail: ' + req.params.id);
+    async.parallel({
+        posts: function(callback) {
+            Posts.find()
+                .sort([['subject', 'ascending']])
+                .exec(callback)
+        },
+        section: function(callback) {
+            Section.findById(req.params.id)
+                .exec(callback)
+        }
+    }, function(err, results) {
+        let sectionID = JSON.stringify(results.section._id)
+
+        let postArray = []
+        for (let i = 0; i < results.posts.length; i++) {
+            let postSectionID = JSON.stringify(results.posts[i].section)
+
+            if (postSectionID === sectionID) {
+                postArray.push(results.posts[i])
+            }
+        }
+        
+        res.render('section_detail', { title: results.section.name, error: err, posts: postArray, section: results.section})
+        
+    });
 };
 
 // Display section create form on GET.

@@ -1,0 +1,9 @@
+block content
+    h1 Members Only
+
+    div(class="section-container")
+        h2(class="section-name") #{section.name}
+        div(class="posts-container")
+            each post in posts
+                div(class="post-container")
+                    h3(class="post-name") #{post.subject}

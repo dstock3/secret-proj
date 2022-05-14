@@ -14,7 +14,7 @@ var SectionSchema = new Schema(
 SectionSchema
 .virtual('url')
 .get(function () {
-  return '/section/' + this.name;
+  return '/section/' + this._id;
 });
 
 //Export model

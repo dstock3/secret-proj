@@ -4,7 +4,8 @@ block content
     h1 Members Only
     each sectionDetails in sections
         div(class="section-container")
-            h2(class="section-name") #{sectionDetails.section.name}
+            h2(class="section-name") 
+                a(href= "section/" + sectionDetails.section._id ) #{sectionDetails.section.name}
 
             div(class="posts-container")
                 each postDetails in posts
