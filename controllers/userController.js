@@ -50,6 +50,7 @@ exports.user_create_post = function(req, res, next) {
                 name: req.body.name,
                 password: hashedPassword,
                 bio: req.body.bio,
+                isAdmin: false,
                 date: today
               }).save(err => {
                 if (err) {

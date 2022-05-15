@@ -6,6 +6,7 @@ var UserSchema = new Schema(
   {
     name: {type: String, required: true, maxLength: 100},
     password: {type: String, required: true},
+    isAdmin: {type: Boolean, required: true},
     date: {type: Date, required: true},
     bio: {type: String, required: true, maxLength: 280},
     profile: {type: String, required: false},
