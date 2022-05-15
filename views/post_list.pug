@@ -1,0 +1,20 @@
+block content
+    h1 Members Only
+
+    div(class="main-posts-container")
+        each postDetail in posts
+            div(class="post-container")
+                div(class="post-top")
+                    h3(class="post-name") #{postDetail.post.subject}
+                    each userDetail in users
+                        if userDetail.userID === postDetail.postUserID
+                            div(class="post-author") 
+                                a(href="user/" + userDetail.user._id) #{userDetail.user.name}
+                div(class="post-bottom")
+                    div(class="post-body") #{postDetail.post.content}
+                    each sectionDetail in sections
+                        if sectionDetail.sectionID === postDetail.postSectionID
+                            div(class="post-section")
+                                a(href= "section/" + sectionDetail.section._id ) #{sectionDetail.section.name}
+                            
+                    

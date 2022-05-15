@@ -2,13 +2,13 @@ extends layout
 
 block content
     h1 Members Only
-    each sectionDetails in sections
+    each sectionDetail in sections
         div(class="section-container")
             h2(class="section-name") 
-                a(href= "section/" + sectionDetails.section._id ) #{sectionDetails.section.name}
+                a(href= "section/" + sectionDetail.section._id ) #{sectionDetail.section.name}
 
             div(class="posts-container")
-                each postDetails in posts
-                    if sectionDetails.sectionID === postDetails.postSectionID
+                each postDetail in posts
+                    if sectionDetail.sectionID === postDetail.postSectionID
                         div(class="post-container")
-                            h3(class="post-name") #{postDetails.post.subject}
+                            h3(class="post-name") #{postDetail.post.subject}
