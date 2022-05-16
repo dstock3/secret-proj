@@ -1,6 +1,6 @@
-var User = require('../models/user');
-var passport = require('passport');
-var bcrypt = require('bcryptjs')
+const User = require('../models/user');
+const passport = require('passport');
+const bcrypt = require('bcryptjs')
 
 // Display list of all users.
 exports.user_list = function(req, res) {
@@ -42,12 +42,10 @@ exports.user_create_post = function(req, res, next) {
     today = mm + '/' + dd + '/' + yyyy;
 
     bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-        if (err) {
-            console.error(err)
-            return next(err);
+        if (err) { return next(err);
         } else {
             const user = new User({
-                name: req.body.name,
+                username: req.body.name,
                 password: hashedPassword,
                 bio: req.body.bio,
                 isAdmin: false,

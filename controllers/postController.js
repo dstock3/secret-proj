@@ -1,7 +1,7 @@
-var Posts = require('../models/posts');
-var Section = require('../models/section');
-var User = require('../models/user')
-var async = require('async');
+const Posts = require('../models/posts');
+const Section = require('../models/section');
+const User = require('../models/user')
+const async = require('async');
 
 // Display list of all Posts.
 exports.post_list = function(req, res) {

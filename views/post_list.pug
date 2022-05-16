@@ -9,7 +9,7 @@ block content
                     each userDetail in users
                         if userDetail.userID === postDetail.postUserID
                             div(class="post-author") 
-                                a(href="user/" + userDetail.user._id) #{userDetail.user.name}
+                                a(href="user/" + userDetail.user._id) #{userDetail.user.username}
                 div(class="post-bottom")
                     div(class="post-body") #{postDetail.post.content}
                     each sectionDetail in sections

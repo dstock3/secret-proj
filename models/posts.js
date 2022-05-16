@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var PostsSchema = new Schema(
+const PostsSchema = new Schema(
   {
     author: {type: Schema.Types.ObjectId, ref: 'User', required: true}, //reference the associated user
     subject: {type: String, required: true, maxLength: 100},

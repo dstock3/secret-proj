@@ -1,24 +1,24 @@
 require('dotenv').config()
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var passport = require('passport');
-var LocalStrategy = require('passport-local');
-var session = require("express-session"); 
-var bcrypt = require('bcryptjs')
-var User = require("./models/user");
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const session = require("express-session"); 
+const bcrypt = require('bcryptjs')
+const User = require("./models/user");
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
-var app = express();
+const app = express();
 
 //Set up mongoose connection
-var mongoose = require('mongoose');
-var mongoDB = process.env.db_connect;
+const mongoose = require('mongoose');
+const mongoDB = process.env.db_connect;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
@@ -32,18 +32,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 passport.use(new LocalStrategy((username, password, done) => {
-  User.findOne({ name: username }, (err, user) => {
-    if (err) return done(err);
-    if (!user) return done(null, false, { message: "Incorrect username" });
-    bcrypt.compare(password, user.password, (err, res) => {
-      if (err) return done(err);
-      // Passwords verified
-      if (res) return done(null, user);
-      // Passwords don't match
-      else return done(null, false, { message: "Incorrect password" });
-    });
-  });
-}));
+      User.findOne({username: username.trim()}, (err, user) => {
+          if(err) return done(err)
+
+          if(!user){
+              return done(null, false, {message: "Incorrect username"})
+          }
+          bcrypt.compare(password, user.password, (err, res) => {
+              if(res){
+                  return done(null, user)
+              } else{
+                  return done(null, false, {message: "Incorrect password"})
+              }
+          })
+      })
+  })
+)
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);

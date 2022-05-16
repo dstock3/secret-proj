@@ -1,12 +1,12 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var UserSchema = new Schema(
+const UserSchema = new Schema(
   {
-    name: {type: String, required: true, maxLength: 100},
+    username: {type: String, required: true, maxLength: 100},
     password: {type: String, required: true},
-    isAdmin: {type: Boolean, required: true},
+    isAdmin: {type: Boolean, required: true, default:false},
     date: {type: Date, required: true},
     bio: {type: String, required: true, maxLength: 280},
     profile: {type: String, required: false},
