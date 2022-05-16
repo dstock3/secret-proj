@@ -1,31 +1,31 @@
 #! /usr/bin/env node
 
 // Get arguments passed on command line
-var userArgs = process.argv.slice(2);
+const userArgs = process.argv.slice(2);
 /*
 if (!userArgs[0].startsWith('mongodb')) {
     console.log('ERROR: You need to specify a valid mongodb URL as the first argument');
     return
 }
 */
-var async = require('async')
-var Post = require('./models/posts')
-var Section = require('./models/section')
-var User = require('./models/user')
+const async = require('async')
+const Post = require('./models/posts')
+const Section = require('./models/section')
+const User = require('./models/user')
 
-var mongoose = require('mongoose');
-var mongoDB = userArgs[0];
+const mongoose = require('mongoose');
+const mongoDB = userArgs[0];
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var posts = []
-var sections = []
-var users = []
+const posts = []
+const sections = []
+const users = []
 
 function postCreate(author, subject, content, section, date, cb) {
-  var post = new Post({author: author, subject: subject, content: content, section: section, date: date});
+  let post = new Post({author: author, subject: subject, content: content, section: section, date: date});
        
   post.save(function (err) {
     if (err) {
@@ -60,7 +60,7 @@ function sectionCreate(name, description, posts, cb) {
 
 function userCreate(name, date, bio, profile, posts, cb) {
   let userDetail = {
-    name: name,
+    username: name,
     date: date, 
     bio: bio,
     profile: profile,
@@ -112,7 +112,6 @@ function createSectionUsers(cb) {
 }
 
 function createPosts(cb) {
-  //postCreate(author, subject, content, section, date, cb)
     async.parallel([
         function(callback) {
           postCreate(
@@ -121,6 +120,15 @@ function createPosts(cb) {
             "Mi bibendum neque egestas congue quisque. Cursus eget nunc scelerisque viverra mauris. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus et. Sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus.",
             sections[0],
             '2022-05-02',
+            callback);
+        },
+        function(callback) {
+          postCreate(
+            users[2],
+            "Test Post",
+            "Test test test",
+            sections[0],
+            '2022-05-04',
             callback);
         },
         function(callback) {
@@ -171,7 +179,4 @@ function(err, results) {
     // All done, disconnect from database
     mongoose.connection.close();
 });
-
-
-
 
