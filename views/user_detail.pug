@@ -1,18 +1,19 @@
 block content
-    h1 Members Only
+    main
+        h1 Members Only
 
-    div(class="section-options")
-        a(href="/users") See All Users
+        div(class="section-options")
+            a(href="/users") See All Users
 
-    div(class="user-container")
-        div(class="user-info")
-            h2(class="username") #{user.userDetails.username}
-            div(class="bio") #{user.userDetails.bio}
-            div(class="date-jointed")  #{user.userDetails.date}
-        div(class="posts-container")
-            each postDetail in posts
-                div(class="post-container")
+        div(class="user-container")
+            div(class="user-info")
+                h2(class="username") #{user.userDetails.username}
+                div(class="bio") #{user.userDetails.bio}
+                div(class="date-jointed")  #{user.userDetails.date}
+            div(class="posts-container")
+                each postDetail in posts
+                    div(class="post-container")
 
-                    h3(class="post-name") #{post.subject}
+                        h3(class="post-name") #{post.subject}
 
     

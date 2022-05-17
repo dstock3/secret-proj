@@ -1,17 +1,18 @@
 extends layout
 
 block content
-  h1 Members Only
-  if user
-    h2 Welcome Back #{user.name}
-    a(href="/log-out") Log Out
-  else
-    h1 Please Log In
-    form(action="/log-in" method="POST")
-        label(for="name") Username
-        input(name="name" type="text")
-        label(for="password") Password
-        input(name="password" type="password")
-        button Log In
-    div(class="sign-up") Don't have an account? 
-      a(href="/sign-up") Sign Up!
+  main
+    h1 Members Only
+    if user
+      h2 Welcome Back #{user.name}
+      a(href="/log-out") Log Out
+    else
+      h1 Please Log In
+      form(action="/log-in" method="POST")
+          label(for="name") Username
+          input(name="name" type="text")
+          label(for="password") Password
+          input(name="password" type="password")
+          button Log In
+      div(class="sign-up") Don't have an account? 
+        a(href="/sign-up") Sign Up!

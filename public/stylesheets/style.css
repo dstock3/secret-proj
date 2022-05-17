@@ -7,6 +7,15 @@ a {
   color: #00B7FF;
 }
 
+/* Main */
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Footer */
 
 .attribution {

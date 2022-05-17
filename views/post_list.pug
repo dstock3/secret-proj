@@ -1,7 +1,6 @@
 block content
-    h1 Members Only
-
-    div(class="main-posts-container")
+    main(class="main-posts-container")
+        h1 Members Only
         each postDetail in posts
             div(class="post-container")
                 div(class="post-top")
@@ -16,5 +15,3 @@ block content
                         if sectionDetail.sectionID === postDetail.postSectionID
                             div(class="post-section")
                                 a(href= "section/" + sectionDetail.section._id ) #{sectionDetail.section.name}
-                            
-                    

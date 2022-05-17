@@ -1,13 +1,14 @@
 extends layout
 
 block content
-    h1 Members Only
-    h2 Please Log In
-    form(action="/log-in" method="POST")
-        label(for="name") Username
-        input(name="name" type="text" required="true")
-        label(for="password") Password
-        input(name="password" type="password" required="true")
-        button Log In
-    div(class="sign-up") Don't have an account? 
-      a(href="/sign-up") Sign Up!
+    main
+        h1 Members Only
+        h2 Please Log In
+        form(action="/log-in" method="POST")
+            label(for="name") Username
+            input(name="name" type="text" required="true")
+            label(for="password") Password
+            input(name="password" type="password" required="true")
+            button Log In
+        div(class="sign-up") Don't have an account? 
+        a(href="/sign-up") Sign Up!
