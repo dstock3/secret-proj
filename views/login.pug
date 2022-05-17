@@ -3,7 +3,7 @@ extends layout
 block content
     main
         form(action="/log-in" method="POST")
-            h2 Please Log In
+            h2(class="form-head") Please Log In
             label(for="name") Username
             input(name="name" type="text" required="true")
             label(for="password") Password

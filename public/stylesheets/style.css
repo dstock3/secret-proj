@@ -71,6 +71,11 @@ form {
   padding: 15px;
 }
 
+.form-head {
+  font-size: 1.25em;
+  margin-bottom: 15px;
+}
+
 label {
   font-size: 1.5em;
   margin-bottom: 10px;
