@@ -2,7 +2,6 @@ extends layout
 
 block content
   main
-    h1 Members Only
     if user
       h2 Welcome Back #{user.name}
       a(href="/log-out") Log Out
@@ -13,6 +12,6 @@ block content
           input(name="name" type="text")
           label(for="password") Password
           input(name="password" type="password")
-          button Log In
+          button(class="submit-button") Log In
       div(class="sign-up") Don't have an account? 
         a(href="/sign-up") Sign Up!
