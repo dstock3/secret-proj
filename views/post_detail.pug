@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    main(class="main-post-detail")
+        div(class="post-container")
+            div(class="post-top")
+                h3(class="post-name") #{post.subject}
+                each userDetail in users
+                    if userDetail.userID === postAuthorID
+                        div(class="post-author") 
+                            a(href="/user/" + userDetail.user.username) #{userDetail.user.username}
+            div(class="post-bottom")
+                div(class="post-body") #{post.content}
+                each sectionDetail in sections
+                    if sectionDetail.sectionID === postSectionID
+                        div(class="post-section")
+                            a(href= "/section/" + sectionDetail.section._id ) #{sectionDetail.section.name}

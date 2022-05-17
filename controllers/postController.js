@@ -54,7 +54,44 @@ exports.post_list = function(req, res) {
 
 // Display detail page for a specific Post.
 exports.post_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: Post detail: ' + req.params.id);
+    async.parallel({
+        post: function(callback) {
+            Posts.findById(req.params.id)
+                .exec(callback)
+        },
+        sections: function(callback) {
+            Section.find()
+                .exec(callback)
+        },
+        users: function(callback) {
+            User.find()
+                .exec(callback)
+        }
+    }, function(err, results) {
+
+        let sectionArray = []
+        let userArray = []
+        let postAuthorID = JSON.stringify(results.post.author)
+        let postSectionID = JSON.stringify(results.post.section)
+
+        for (let y = 0; y < results.sections.length; y++) {
+            let sectionDetails = {
+                section: results.sections[y],
+                sectionID: JSON.stringify(results.sections[y]._id)
+            }
+            sectionArray.push(sectionDetails)
+        }
+
+        for (let z = 0; z < results.users.length; z++) {
+            let userDetails = {
+                user: results.users[z],
+                userID: JSON.stringify(results.users[z]._id)
+            }
+            userArray.push(userDetails)
+        }
+
+        res.render('post_detail', { title: results.post.subject, error: err, post: results.post, postAuthorID: postAuthorID, postSectionID: postSectionID,  sections: sectionArray, users: userArray })
+    });
 };
 
 // Display Post create form on GET.

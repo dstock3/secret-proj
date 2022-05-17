@@ -6,12 +6,12 @@ block content
       h2 Welcome Back #{user.name}
       a(href="/log-out") Log Out
     else
-      h1 Please Log In
       form(action="/log-in" method="POST")
-          label(for="name") Username
-          input(name="name" type="text")
-          label(for="password") Password
-          input(name="password" type="password")
-          button(class="submit-button") Log In
+        h2(class="form-head") Please Log In
+        label(for="name") Username
+        input(name="name" type="text")
+        label(for="password") Password
+        input(name="password" type="password")
+        button(class="submit-button") Log In
       div(class="sign-up") Don't have an account? 
         a(href="/sign-up") Sign Up!
