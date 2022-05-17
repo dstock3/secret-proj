@@ -1,6 +1,6 @@
-var Section = require('../models/section');
-var Posts = require('../models/posts');
-var async = require('async');
+const Section = require('../models/section');
+const Posts = require('../models/posts');
+const async = require('async');
 
 // Display list of all sections.
 exports.section_list = function(req, res) {

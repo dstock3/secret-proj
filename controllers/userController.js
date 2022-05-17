@@ -1,6 +1,9 @@
 const User = require('../models/user');
+const Posts = require('../models/posts');
+const Section = require('../models/section');
 const passport = require('passport');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const async = require('async');
 
 // Display list of all users.
 exports.user_list = function(req, res) {
@@ -9,7 +12,48 @@ exports.user_list = function(req, res) {
 
 // Display detail page for a specific user.
 exports.user_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: user detail: ' + req.params.id);
+    async.parallel({
+        user: function(callback) {
+            User.findOne({username: req.params.name})
+                .exec(callback)
+        },
+        posts: function(callback) {
+            Posts.find()
+                .exec(callback)
+        },
+        sections: function(callback) {
+            Section.find()
+                .exec(callback)
+        }
+    }, function(err, results) {
+        let postArray = []
+        let sectionArray = []
+
+        for (let i = 0; i < results.posts.length; i++) {
+            let postDetails = {
+                post: results.posts[i],
+                postSectionID: JSON.stringify(results.posts[i].section),
+                postUserID: JSON.stringify(results.posts[i].author)
+            }
+            postArray.push(postDetails)
+        }
+
+        for (let y = 0; y < results.sections.length; y++) {
+            let sectionDetails = {
+                section: results.sections[y],
+                sectionID: JSON.stringify(results.sections[y]._id)
+            }
+            sectionArray.push(sectionDetails)
+        }
+        console.log(req.params.id)
+        let user = {
+            userDetails: results.user,
+            userID: JSON.stringify(results.user._id)
+        }
+        
+        res.render('user_detail', { title: results.user.username, error: err, user: user, posts: postArray, sections: sectionArray });
+    });
+    
 };
 
 exports.user_login_get = function(req, res) {
