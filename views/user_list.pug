@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    main
+        div(class="users-container")
+            each user in users
+                div(class="user-container")
+                    div(class="user-info")
+                        h2(class="username") 
+                            a(href="user/" + user.username) #{user.username}
+                        div(class="bio") #{user.bio}
+                        div(class="date-jointed")  #{user.date}

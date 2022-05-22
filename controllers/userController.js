@@ -7,7 +7,11 @@ const async = require('async');
 
 // Display list of all users.
 exports.user_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: user list');
+    User.find()
+        .exec(function(err, users) {
+            if (err) return next(err);
+            res.render('user_list', { title: "Users", users: users })
+        })
 };
 
 // Display detail page for a specific user.
@@ -45,7 +49,7 @@ exports.user_detail = function(req, res) {
             }
             sectionArray.push(sectionDetails)
         }
-        console.log(req.params.id)
+
         let user = {
             userDetails: results.user,
             userID: JSON.stringify(results.user._id)
