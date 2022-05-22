@@ -33,15 +33,6 @@ exports.user_detail = function(req, res) {
         let postArray = []
         let sectionArray = []
 
-        for (let i = 0; i < results.posts.length; i++) {
-            let postDetails = {
-                post: results.posts[i],
-                postSectionID: JSON.stringify(results.posts[i].section),
-                postUserID: JSON.stringify(results.posts[i].author)
-            }
-            postArray.push(postDetails)
-        }
-
         for (let y = 0; y < results.sections.length; y++) {
             let sectionDetails = {
                 section: results.sections[y],
@@ -54,7 +45,18 @@ exports.user_detail = function(req, res) {
             userDetails: results.user,
             userID: JSON.stringify(results.user._id)
         }
-        
+
+        for (let i = 0; i < results.posts.length; i++) {
+            let postDetails = {
+                post: results.posts[i],
+                postSectionID: JSON.stringify(results.posts[i].section),
+                postUserID: JSON.stringify(results.posts[i].author)
+            }
+            if (postDetails.postUserID === user.userID) {
+                postArray.push(postDetails)
+            }
+        }
+
         res.render('user_detail', { title: results.user.username, error: err, user: user, posts: postArray, sections: sectionArray });
     });
     

@@ -10,10 +10,15 @@ block content
                 h2(class="username") #{user.userDetails.username}
                 div(class="bio") #{user.userDetails.bio}
                 div(class="date-jointed")  #{user.userDetails.date}
-            div(class="posts-container")
+        div(class="posts-container")
+            if posts.length > 0
                 each postDetail in posts
                     div(class="post-container")
-                        h3(class="post-name") #{post.subject}
-                        div(class="post-content") #{post.content}
+                        h3(class="post-name") 
+                            a(href="/post/" + postDetail.post._id) #{postDetail.post.subject}
+                        div(class="post-content") #{postDetail.post.content}
+            else
+                div(class="post-container") This user hasn't posted anything.
+
 
     

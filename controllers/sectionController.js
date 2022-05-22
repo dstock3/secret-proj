@@ -34,7 +34,7 @@ exports.section_list = function(req, res) {
             postArray.push(postDetails)
         }
 
-        res.render('sections', { title: 'Sections', error: err, posts: postArray, sections: sectionArray  });
+        res.render('sections_list', { title: 'Sections', error: err, posts: postArray, sections: sectionArray  });
     });
 };
 
