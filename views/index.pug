@@ -6,7 +6,7 @@ block content
       h2 Welcome Back #{user.name}
       a(href="/log-out") Log Out
     else
-      form(action="/log-in" method="POST")
+      form(class="login-form" action="/log-in" method="POST")
         h2(class="form-head") Please Log In
         label(for="name") Username
         input(name="name" type="text")

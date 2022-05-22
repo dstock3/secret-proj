@@ -73,8 +73,9 @@ form {
 }
 
 .form-head {
-  font-size: 1.25em;
+  font-size: 1.5em;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 label {
@@ -98,6 +99,10 @@ input {
   border-radius: 5px;
   width: 100%;
   cursor: pointer;
+}
+
+.signup-form, .login-form {
+  width: 25%;
 }
 
 /* Footer */
