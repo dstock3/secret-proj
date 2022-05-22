@@ -8,8 +8,10 @@ block content
             input(name="name" type="text" required="true")
             label(for="password") Password
             input(name="password" type="password" required="true")
+            label(for="confirm-password") Confirm Password
+            input(name="confirm-password" type="password" required="true")
             label(for="bio") Bio
-            textarea(name="bio" type="text" required="true" placeholder="Tell us about yourself.")
+            textarea(name="bio" class="signup-bio" type="text" required="true" rows="4" placeholder="Tell us about yourself.")
             button(class="submit-button") Sign Up
         div(class="log-in") Already have an account?
             a(href="/log-in") Log In
