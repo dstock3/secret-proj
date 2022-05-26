@@ -63,12 +63,12 @@ exports.user_detail = function(req, res) {
 };
 
 exports.user_login_get = function(req, res) {
-    res.render("login")
+    res.render("login", { user: req.user });
 }
 
 exports.user_login_post = passport.authenticate("local", {
-    successRedirect: "/success",
-    failureRedirect: "/failure",
+    successRedirect: "/",
+    failureRedirect: "/",
 });
 
 exports.user_logout_get = (req, res) => {
@@ -78,7 +78,7 @@ exports.user_logout_get = (req, res) => {
 
 // Display user create form on GET.
 exports.user_create_get = function(req, res) {
-    res.render("signup")
+    res.render("signup", { user: req.user });
 };
 
 // Handle user create on POST.

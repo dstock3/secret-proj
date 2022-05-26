@@ -32,22 +32,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 passport.use(new LocalStrategy((username, password, done) => {
-      User.findOne({username: username.trim()}, (err, user) => {
-          if(err) return done(err)
+  User.findOne({ username: username }, (err, user) => {
+    if (err) return done(err);
+    
+    if (!user) {
+      return done(null, false, { message: "Incorrect username" });
+    };
 
-          if(!user){
-              return done(null, false, {message: "Incorrect username"})
-          }
-          bcrypt.compare(password, user.password, (err, res) => {
-              if(res){
-                  return done(null, user)
-              } else{
-                  return done(null, false, {message: "Incorrect password"})
-              }
-          })
-      })
-  })
-)
+    bcrypt.compare(password, user.password, (err, res) => {
+      if (err) return done(err);
+      if (res) {return done(null, user)}
+      else {return done(null, false, { message: "Incorrect password" })};
+    });
+  });
+}));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -58,13 +56,14 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-app.use(session({ secret: process.env.secret, resave: false, saveUninitialized: true }));
+
+app.use(session({ secret: "member", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 // access user obj from anywhere in our app
-app.use((req, res, next) => {
+app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });

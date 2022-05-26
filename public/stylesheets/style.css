@@ -67,6 +67,15 @@ main {
   margin-bottom: 15px;
 }
 
+.user-info {
+  margin-top: 10px;
+}
+
+.username {
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+
 /* Form */ 
 
 form {
