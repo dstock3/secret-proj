@@ -98,6 +98,10 @@ main {
   text-decoration: none;
 }
 
+#section-posts {
+  margin-left: 25px;
+}
+
 /* Form */ 
 
 form {
