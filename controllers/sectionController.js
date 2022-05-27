@@ -15,26 +15,25 @@ exports.section_list = function(req, res) {
                 .exec(callback)
         }
     }, function(err, results) {
-
         let sectionArray = []
-        let postArray = []
 
         for (let y = 0; y < results.sections.length; y++) {
+            let newPostArray = []
+            for (let i = 0; i < results.posts.length; i++) {
+                if (JSON.stringify(results.posts[i].section._id) === JSON.stringify(results.sections[y]._id)) {
+                    newPostArray.push(results.posts[i])
+                } 
+            }
+
             let sectionDetails = {
                 section: results.sections[y],
-                sectionID: JSON.stringify(results.sections[y]._id)
+                posts: newPostArray
             }
+
             sectionArray.push(sectionDetails)
         }
-        for (let i = 0; i < results.posts.length; i++) {
-            let postDetails = {
-                post: results.posts[i],
-                postSectionID: JSON.stringify(results.posts[i].section)
-            }
-            postArray.push(postDetails)
-        }
 
-        res.render('sections_list', { title: 'Sections', error: err, posts: postArray, sections: sectionArray  });
+        res.render('sections_list', { title: 'Sections', error: err, sections: sectionArray });
     });
 };
 

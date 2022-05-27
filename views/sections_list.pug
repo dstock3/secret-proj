@@ -7,9 +7,15 @@ block content
                 h2(class="section-name") 
                     a(href= "section/" + sectionDetail.section._id ) #{sectionDetail.section.name}
 
-                div(class="posts-container" id="section-posts")
-                    each postDetail in posts
-                        if sectionDetail.sectionID === postDetail.postSectionID
+                if sectionDetail.posts.length > 0
+                    div(class="posts-container" id="section-posts")
+                        each post in sectionDetail.posts
                             div(class="post-container")
                                 h3(class="post-name") 
-                                    a(href="/post/" + postDetail.post._id) #{postDetail.post.subject}
+                                    a(href="/post/" + post._id) #{post.subject}
+                else
+                    div(class="posts-container" id="section-posts")
+                        div(class="post-container")
+                            h3(class="post-name") There are no posts in this section.
+
+
