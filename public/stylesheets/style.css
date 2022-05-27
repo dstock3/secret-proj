@@ -63,19 +63,6 @@ main {
   background-color: rgb(39, 39, 39);
 }
 
-.user-container {
-  margin-bottom: 15px;
-}
-
-.user-info {
-  margin-top: 10px;
-}
-
-.username {
-  font-size: 1.25em;
-  margin-bottom: 10px;
-}
-
 /* Sections */
 
 .section-container {
@@ -100,6 +87,44 @@ main {
 
 #section-posts {
   margin-left: 25px;
+}
+
+/* Users */
+
+.user-detail-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.section-options {
+  text-align: end;
+}
+
+.section-options a {
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #00B7FF;
+  padding-right: 15px;
+  color: black;
+}
+
+.user-container {
+  max-width: 25%;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  margin-left: 15px;
+
+}
+
+.user-info {
+  width: 85%;
+  margin: 15px;
+}
+
+.username {
+  font-size: 1.25em;
+  margin-bottom: 10px;
 }
 
 /* Form */ 
