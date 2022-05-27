@@ -88,7 +88,7 @@ form {
 
 .form-head {
   font-size: 1.5em;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   text-align: center;
 }
 
@@ -123,6 +123,14 @@ input {
 .signup-bio {
   resize: vertical; 
   max-height: 100px;
+}
+
+.dec {
+  width: 85%;
+  height: 2px;
+  margin: auto;
+  border-top: 2px solid white;
+  margin-bottom: 7px;
 }
 
 /* Footer */
