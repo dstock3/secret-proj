@@ -76,6 +76,21 @@ main {
   margin-bottom: 10px;
 }
 
+/* Sections */
+
+.section-name {
+  font-size: 1.25em;
+  width: 150px;
+  text-align: center;
+}
+
+.section-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+}
+
 /* Form */ 
 
 form {
