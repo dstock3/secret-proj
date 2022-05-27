@@ -97,24 +97,31 @@ main {
 }
 
 .section-options {
-  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 25px;
 }
 
 .section-options a {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 2px;
   text-decoration: none;
   font-weight: bold;
   background-color: #00B7FF;
-  padding-right: 15px;
+  padding-inline: 15px;
   color: black;
 }
 
 .user-container {
+  border: 2px solid #00B7FF;
   max-width: 25%;
   background-color: black;
   color: white;
   border-radius: 5px;
   margin-left: 15px;
-
 }
 
 .user-info {
@@ -125,6 +132,10 @@ main {
 .username {
   font-size: 1.25em;
   margin-bottom: 10px;
+}
+
+#user-posts {
+  margin-left: 15%;
 }
 
 /* Form */ 

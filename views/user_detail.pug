@@ -9,7 +9,7 @@ block content
                 div(class="date-jointed")  #{user.userDetails.date}
             div(class="section-options")
                 a(href="/users") See All Users
-        div(class="posts-container")
+        div(class="posts-container" id="user-posts")
             if posts.length > 0
                 each postDetail in posts
                     div(class="post-container")
