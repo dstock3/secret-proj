@@ -124,6 +124,14 @@ main {
   margin-left: 15px;
 }
 
+.users-container > .user-container  {
+  min-width: 85%;
+  margin-left: unset;
+  margin: auto;
+  margin-bottom: 15px;
+
+}
+
 .user-info {
   width: 85%;
   margin: 15px;
