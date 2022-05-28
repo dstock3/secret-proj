@@ -124,6 +124,10 @@ main {
   margin-left: 15px;
 }
 
+.user-list > .users-container {
+  padding: 10px;
+}
+
 .users-container > .user-container  {
   min-width: 85%;
   margin-left: unset;
