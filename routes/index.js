@@ -63,19 +63,19 @@ router.post('/log-in', user_controller.user_login_post);
 router.get('/log-out', user_controller.user_logout_get);
 
 // GET request to delete user.
-router.get('/user/:name/delete', user_controller.user_delete_get);
+router.get('/users/:name/delete', user_controller.user_delete_get);
 
 // POST request to delete user.
-router.post('/user/:name/delete', user_controller.user_delete_post);
+router.post('/users/:name/delete', user_controller.user_delete_post);
 
 // GET request to update user.
-router.get('/user/:name/update', user_controller.user_update_get);
+router.get('/users/:name/update', user_controller.user_update_get);
 
 // POST request to update user.
-router.post('/user/:name/update', user_controller.user_update_post);
+router.post('/users/:name/update', user_controller.user_update_post);
 
 // GET request for one user.
-router.get('/user/:name', user_controller.user_detail);
+router.get('/users/:name', user_controller.user_detail);
 
 // GET request for list of all users.
 router.get('/users', user_controller.user_list);
