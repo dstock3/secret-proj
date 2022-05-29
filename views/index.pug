@@ -1,18 +1,20 @@
 extends layout
 
 block content
-  main
+  
     if user
-      h2 Welcome Back #{user.name}
-      a(href="/log-out") Log Out
+      main(class="welcome-page")
+        h2 Welcome Back #{user.name}
+        a(href="/log-out") Log Out
     else
-      form(class="login-form" action="/log-in" method="POST")
-        h2(class="form-head") Please Log In
-        div(class="dec")
-        label(for="name") Username
-        input(name="name" type="text")
-        label(for="password") Password
-        input(name="password" type="password")
-        button(class="submit-button") Log In
-      div(class="sign-up") Don't have an account? 
-        a(href="/sign-up") Sign Up!
+      main(class="login-page")
+        form(class="login-form" action="/log-in" method="POST")
+          h2(class="form-head") Please Log In
+          div(class="dec")
+          label(for="name") Username
+          input(name="name" type="text")
+          label(for="password") Password
+          input(name="password" type="password")
+          button(class="submit-button") Log In
+        div(class="sign-up") Don't have an account? 
+          a(href="/sign-up") Sign Up!

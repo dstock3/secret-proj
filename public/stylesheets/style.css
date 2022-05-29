@@ -73,6 +73,10 @@ main {
   background-color: rgb(39, 39, 39);
 }
 
+.login-page {
+  justify-content: flex-start;
+}
+
 /* Sections */
 
 .section-container {
