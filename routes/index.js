@@ -8,7 +8,6 @@ var section_controller = require('../controllers/sectionController');
 
 // GET home page.
 router.get('/', function(req, res) {
-  console.log(req.user)
   res.render("index", { user: req.user });
 });
 

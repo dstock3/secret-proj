@@ -73,7 +73,7 @@ main {
   background-color: rgb(39, 39, 39);
 }
 
-.login-page {
+.login-page, .signup-page {
   justify-content: flex-start;
 }
 
@@ -100,7 +100,7 @@ main {
 }
 
 #section-posts {
-  margin-left: 25px;
+  margin-left: 20px;
   width: 650px;
 }
 
