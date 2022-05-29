@@ -26,6 +26,11 @@ header h1 {
   margin-bottom: 15px;
 }
 
+.homelink {
+  font-weight: bold;
+  text-decoration: none;
+}
+
 /* Main */
 
 main {
@@ -61,6 +66,7 @@ main {
   border-radius: 5px;
   padding: 15px;
   background-color: rgb(39, 39, 39);
+  width: 90%;
 }
 
 /* Sections */
@@ -87,6 +93,7 @@ main {
 
 #section-posts {
   margin-left: 25px;
+  width: 650px;
 }
 
 /* Users */
