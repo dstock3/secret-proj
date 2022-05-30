@@ -179,12 +179,9 @@ main {
 
 .post-top {
   margin-top: 5px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
-}
-
-.post-bottom {
-  margin-top: 15px;
 }
 
 .post-name {
@@ -194,6 +191,11 @@ main {
 
 .post-body {
   margin-bottom: 10px;
+}
+
+.post-bottom {
+  display: flex;
+  justify-content: space-between;
 }
 
 

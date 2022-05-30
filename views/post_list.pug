@@ -10,8 +10,8 @@ block content
                         if userDetail.userID === postDetail.postUserID
                             div(class="post-author") 
                                 a(href="user/" + userDetail.user.username) #{userDetail.user.username}
+                div(class="post-body") #{postDetail.post.content}
                 div(class="post-bottom")
-                    div(class="post-body") #{postDetail.post.content}
                     a(href="/post/" + postDetail.post._id) Read More
                     each sectionDetail in sections
                         if sectionDetail.sectionID === postDetail.postSectionID
