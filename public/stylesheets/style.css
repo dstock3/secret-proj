@@ -198,6 +198,12 @@ main {
   justify-content: space-between;
 }
 
+.main-post-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 
 /* Form */ 
 
