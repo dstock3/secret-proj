@@ -12,7 +12,7 @@ block content
                         each post in sectionDetail.posts
                             div(class="post-container")
                                 h3(class="post-name") 
-                                    a(href="/post/" + post._id) #{post.subject}
+                                    a(class="section-post-name" href="/post/" + post._id) #{post.subject}
                 else
                     div(class="posts-container" id="section-posts")
                         div(class="post-container")
