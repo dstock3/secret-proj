@@ -7,9 +7,7 @@ var post_controller = require('../controllers/postController');
 var section_controller = require('../controllers/sectionController');
 
 // GET home page.
-router.get('/', function(req, res) {
-  res.render("index", { user: req.user });
-});
+router.get('/', user_controller.user_login_get);
 
 // Create a Post
 router.get('/post/create', post_controller.post_create_get);

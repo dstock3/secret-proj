@@ -6,13 +6,13 @@ block content
             div(class="post-container")
                 div(class="post-top")
                     h3(class="post-name") #{postDetail.post.subject}
-                    a(href="/post/" + postDetail.post._id) Read More
                     each userDetail in users
                         if userDetail.userID === postDetail.postUserID
                             div(class="post-author") 
                                 a(href="user/" + userDetail.user.username) #{userDetail.user.username}
                 div(class="post-bottom")
                     div(class="post-body") #{postDetail.post.content}
+                    a(href="/post/" + postDetail.post._id) Read More
                     each sectionDetail in sections
                         if sectionDetail.sectionID === postDetail.postSectionID
                             div(class="post-section")

@@ -10,6 +10,7 @@ exports.user_list = function(req, res) {
     User.find()
         .exec(function(err, users) {
             if (err) return next(err);
+            console.log(req.user)
             res.render('user_list', { title: "Users", users: users })
         })
 };
@@ -56,7 +57,7 @@ exports.user_detail = function(req, res) {
                 postArray.push(postDetails)
             }
         }
-
+        
         res.render('user_detail', { title: results.user.username, error: err, user: user, posts: postArray, sections: sectionArray });
     });
     
@@ -68,7 +69,7 @@ exports.user_login_get = function(req, res) {
 
 exports.user_login_post = passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/log-in",
 });
 
 exports.user_logout_get = (req, res) => {
@@ -95,7 +96,7 @@ exports.user_create_post = function(req, res, next) {
         if (err) { return next(err);
         } else {
             const user = new User({
-                username: req.body.name,
+                username: req.body.username,
                 password: hashedPassword,
                 bio: req.body.bio,
                 isAdmin: false,

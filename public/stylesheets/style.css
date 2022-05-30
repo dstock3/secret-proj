@@ -71,6 +71,7 @@ main {
   border-radius: 5px;
   padding: 15px;
   background-color: rgb(39, 39, 39);
+  width: 90%;
 }
 
 .login-page, .signup-page {
@@ -149,7 +150,6 @@ main {
   margin-left: unset;
   margin: auto;
   margin-bottom: 15px;
-
 }
 
 .user-info {
@@ -170,6 +170,32 @@ main {
   margin-top: 15px;
   margin-right: 20%;
 }
+
+#user-posts > .post-container {
+  width: 100%;
+}
+
+/* Posts */ 
+
+.post-top {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-bottom {
+  margin-top: 15px;
+}
+
+.post-name {
+  font-size: 1.25em;
+  width: 75%;
+}
+
+.post-body {
+  margin-bottom: 10px;
+}
+
 
 /* Form */ 
 
