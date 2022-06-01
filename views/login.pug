@@ -8,6 +8,9 @@ block content
     else
       main(class="login-page")
         form(class="login-form" action="/log-in" method="POST")
+          div(class="form-top-dec")
+            div(class="form-dec-top-left")
+            div(class="form-dec-top-right")
           h2(class="form-head") Please Log In
           div(class="dec")
           label(for="name") Username
@@ -15,5 +18,8 @@ block content
           label(for="password") Password
           input(name="password" type="password")
           button(class="submit-button") Log In
+          div(class="form-bottom-dec")
+            div(class="form-dec-bottom-left")
+            div(class="form-dec-bottom-right")
         div(class="sign-up") Don't have an account? 
           a(href="/sign-up") Sign Up!

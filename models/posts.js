@@ -8,7 +8,8 @@ const PostsSchema = new Schema(
     subject: {type: String, required: true, maxLength: 100},
     content: {type: String, required: true},
     section: {type: Schema.Types.ObjectId, ref: 'Section', required: true}, //reference to the associated section
-    date: {type: Date, required: true, default: Date.now}
+    date: {type: Date, required: true, default: Date.now},
+    replies: {type: Array}
   }
 );
 
