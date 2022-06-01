@@ -4,9 +4,9 @@ block content
     main(class="user-detail-container")
         div(class="user-container")
             div(class="user-info")
-                h2(class="username") #{user.userDetails.username}
-                div(class="bio") #{user.userDetails.bio}
-                div(class="date-jointed")  #{user.userDetails.date}
+                h2(class="username") #{thisUser.userDetails.username}
+                div(class="bio") #{thisUser.userDetails.bio}
+                div(class="date-jointed")  #{thisUser.userDetails.date}
             div(class="section-options")
                 a(href="/users") See All Users
         div(class="posts-container" id="user-posts")

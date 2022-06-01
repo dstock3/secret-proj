@@ -18,7 +18,7 @@ exports.user_list = function(req, res) {
 // Display detail page for a specific user.
 exports.user_detail = function(req, res) {
     async.parallel({
-        user: function(callback) {
+        thisUser: function(callback) {
             User.findOne({username: req.params.name})
                 .exec(callback)
         },
@@ -42,9 +42,9 @@ exports.user_detail = function(req, res) {
             sectionArray.push(sectionDetails)
         }
 
-        let user = {
-            userDetails: results.user,
-            userID: JSON.stringify(results.user._id)
+        let thisUser = {
+            userDetails: results.thisUser,
+            userID: JSON.stringify(results.thisUser._id)
         }
 
         for (let i = 0; i < results.posts.length; i++) {
@@ -53,18 +53,19 @@ exports.user_detail = function(req, res) {
                 postSectionID: JSON.stringify(results.posts[i].section),
                 postUserID: JSON.stringify(results.posts[i].author)
             }
-            if (postDetails.postUserID === user.userID) {
+            if (postDetails.postUserID === thisUser.userID) {
                 postArray.push(postDetails)
             }
         }
         
-        res.render('user_detail', { title: results.user.username, error: err, user: user, posts: postArray, sections: sectionArray });
+        res.render('user_detail', { title: results.thisUser.username, error: err, thisUser: thisUser, posts: postArray, sections: sectionArray });
     });
     
 };
 
-exports.user_login_get = function(req, res) {
-    res.render("login", { user: req.user });
+exports.user_login_get = async (req, res, next) => {
+    try { return res.render('login', { user: req.user }) }
+    catch (err) { return next(err) }
 }
 
 exports.user_login_post = passport.authenticate("local", {
