@@ -216,6 +216,7 @@ form {
   background-color: rgb(0, 0, 0);
   padding: 15px;
   margin-bottom: 15px;
+  align-items: center;
 }
 
 .form-head {
@@ -263,6 +264,27 @@ input {
   margin: auto;
   border-top: 2px solid white;
   margin-bottom: 7px;
+}
+
+.form-top-dec {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+  margin-bottom: 5px;
+  height: 10px;
+}
+.form-dec-top-left {
+  height: 10px;
+  width: 10px;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+}
+
+.form-dec-top-right {
+  height: 10px;
+  width: 10px;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
 }
 
 /* Footer */
