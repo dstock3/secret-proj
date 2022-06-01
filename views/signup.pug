@@ -3,6 +3,9 @@ extends layout
 block content
     main(class="signup-page")
         form(class="signup-form" action="" method="POST")
+            div(class="form-top-dec")
+                div(class="form-dec-top-left")
+                div(class="form-dec-top-right")
             h2(class="form-head") Create an Account
             div(class="dec")
             label(for="username") Username
@@ -12,5 +15,8 @@ block content
             label(for="bio") Bio
             textarea(name="bio" class="signup-bio" type="text" required="true" rows="4" placeholder="Tell us about yourself.")
             button(class="submit-button") Sign Up
+            div(class="form-bottom-dec")
+                div(class="form-dec-bottom-left")
+                div(class="form-dec-bottom-right")
         div(class="log-in") Already have an account? 
             a(href="/log-in") Log In
