@@ -116,8 +116,8 @@ main {
 
 .user-detail-container {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
+
 }
 
 .section-options {
@@ -145,7 +145,6 @@ main {
   background-color: black;
   color: white;
   border-radius: 5px;
-  margin-left: 15px;
 }
 
 .user-list > .users-container {
@@ -175,7 +174,14 @@ main {
 
 #user-posts {
   margin-top: 15px;
-  margin-right: 20%;
+}
+
+#user-posts .post-name {
+  margin-bottom: 15px;
+}
+
+.bio {
+  margin-bottom: 15px;
 }
 
 /* Posts */ 
