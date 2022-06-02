@@ -14,6 +14,13 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+const initPassport = require('./passport')
+
+initPassport(passport,
+  email => User.find(user => user.email === email),
+  id => User.find(user => user.id === id)
+)
+
 //Set up mongoose connection
 const mongoose = require('mongoose');
 const mongoDB = process.env.db_connect;
@@ -30,34 +37,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-passport.use(new LocalStrategy((username, password, done) => {
-
-  User.findOne({ username: username }, (err, user) => {
-    if (err) return done(err);
-    
-    if (!user) {
-      return done(null, false, { message: "Incorrect username" });
-    };
-
-    bcrypt.compare(password, user.password, (err, res) => {
-      if (err) return done(err);
-      if (res) {return done(null, user)}
-      else {return done(null, false, { message: "Incorrect password" })};
-    });
-  });
-  
-}));
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
