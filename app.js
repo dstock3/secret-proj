@@ -5,10 +5,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const session = require("express-session"); 
-const bcrypt = require('bcrypt')
 const User = require("./models/user");
+const flash = require('express-flash')
 
 const indexRouter = require('./routes/index');
 
@@ -37,7 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(flash())
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());

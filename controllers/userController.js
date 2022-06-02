@@ -70,6 +70,7 @@ exports.user_login_get = async (req, res, next) => {
 exports.user_login_post = passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/log-in",
+    failureFlash: true
 });
 
 exports.user_logout_get = (req, res) => {
