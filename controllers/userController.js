@@ -10,7 +10,6 @@ exports.user_list = function(req, res) {
     User.find()
         .exec(function(err, users) {
             if (err) return next(err);
-            console.log(req.user)
             res.render('user_list', { title: "Users", users: users })
         })
 };
