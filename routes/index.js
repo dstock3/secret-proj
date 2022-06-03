@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 // Require controller modules.
 const auth_controller = require('../controllers/authController');
@@ -8,7 +8,7 @@ const post_controller = require('../controllers/postController');
 const section_controller = require('../controllers/sectionController');
 
 // GET home page.
-router.get('/', user_controller.user_login_get);
+router.get('/', auth_controller.auth_login_get);
 
 // GET request for creating a user. 
 router.get('/sign-up', auth_controller.auth_create_get);
