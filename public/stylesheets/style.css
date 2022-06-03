@@ -18,6 +18,8 @@ header {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   text-align: center;
   min-height: 15vh;
   border-bottom: 3px solid black;
@@ -33,6 +35,18 @@ header h1 {
 .homelink {
   font-weight: bold;
   text-decoration: none;
+}
+
+.header-top {
+  width: 95%;
+  border-bottom: 2px solid white;
+  margin-top: 15px;
+}
+
+.header-bottom {
+  width: 95%;
+  border-top: 2px solid white;
+  margin-bottom: 15px;
 }
 
 /* Main */
