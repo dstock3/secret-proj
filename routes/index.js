@@ -1,13 +1,30 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 // Require controller modules.
-var user_controller = require('../controllers/userController');
-var post_controller = require('../controllers/postController');
-var section_controller = require('../controllers/sectionController');
+const auth_controller = require('../controllers/authController');
+const user_controller = require('../controllers/userController');
+const post_controller = require('../controllers/postController');
+const section_controller = require('../controllers/sectionController');
 
 // GET home page.
 router.get('/', user_controller.user_login_get);
+
+// GET request for creating a user. 
+router.get('/sign-up', auth_controller.auth_create_get);
+
+// POST request for creating user.
+router.post('/sign-up', auth_controller.auth_create_post);
+
+// GET request for user login. 
+router.get('/log-in', auth_controller.auth_login_get);
+
+// POST request for user login. 
+router.post('/log-in', auth_controller.auth_login_post);
+
+// GET request for user logout
+router.get('/log-out', auth_controller.auth_logout_get);
+
 
 // Create a Post
 router.get('/post/create', post_controller.post_create_get);
@@ -44,21 +61,6 @@ router.get('/section/:id', section_controller.section_detail);
 
 // Display all Sections
 router.get('/sections', section_controller.section_list);
-
-// GET request for creating a user. 
-router.get('/sign-up', user_controller.user_create_get);
-
-// POST request for creating user.
-router.post('/sign-up', user_controller.user_create_post);
-
-// GET request for user login. 
-router.get('/log-in', user_controller.user_login_get);
-
-// POST request for user login. 
-router.post('/log-in', user_controller.user_login_post);
-
-// GET request for user logout
-router.get('/log-out', user_controller.user_logout_get);
 
 // GET request to delete user.
 router.get('/users/:name/delete', user_controller.user_delete_get);
