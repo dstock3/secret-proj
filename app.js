@@ -8,6 +8,7 @@ const passport = require('passport');
 const session = require("express-session"); 
 const User = require("./models/user");
 const flash = require('express-flash')
+const methodOverride = require('method-override')
 
 const indexRouter = require('./routes/index');
 
@@ -40,6 +41,7 @@ app.use(flash())
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));
 
 // access user obj from anywhere in our app
